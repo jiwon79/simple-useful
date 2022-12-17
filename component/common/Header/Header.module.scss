@@ -1,0 +1,40 @@
+@import "styles/styleGuide.module.scss";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 12px 0 12px 0;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.logo {
+  margin-right: 20px;
+}
+
+.title {
+  @include heading-Small-font;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 4px 0 4px;
+
+  &:hover {
+    background-color: $grey250;
+  }
+}

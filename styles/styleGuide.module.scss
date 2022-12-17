@@ -1,0 +1,152 @@
+$grey100: #FFFFFF;
+$grey150: #F6F7F9;
+$grey200: #EEF1F5;
+$grey250: #DFE4E8;
+$grey300: #CDD3D9;
+$grey400: #AAB1BC;
+$grey500: #9198A4;
+$grey600: #7B818E;
+$grey650: #626575;
+$grey700: #494B53;
+$grey800: #464646;
+$baseWhite: #FFFFFF;
+$baseWarning: #FB6F43;
+$baseNormalGray: #E6E6E6;
+
+:export {
+    grey100: $grey100;
+    grey150: $grey150;
+    grey200: $grey200;
+    grey250: $grey250;
+    grey300: $grey300;
+    grey400: $grey400;
+    grey500: $grey500;
+    grey600: $grey600;
+    grey650: $grey650;
+    grey700: $grey700;
+    grey800: $grey800;
+    baseWhite: $baseWhite;
+    baseWarning: $baseWarning;
+    baseNormalGray: $baseNormalGray;
+}
+
+// font-profile
+@mixin display-X-Large-font {
+  font-weight: 900;
+  font-size: 96px;
+  line-height: 118px;
+}
+
+@mixin display-Large-font {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 78px;
+}
+
+@mixin display-Medium-font {
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 64px;
+}
+
+@mixin display-Small-font {
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 52px;
+}
+
+@mixin display-X-Small-font {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+}
+
+@mixin heading-XX-Large-font {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 52px;
+}
+
+@mixin heading-X-Large-font {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+}
+
+@mixin heading-Large-font {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+@mixin heading-Medium-font {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+@mixin heading-Small-font {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+@mixin heading-X-Small-font {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@mixin label-X-Large-font {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+@mixin label-Large-font {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@mixin label-Medium-font {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@mixin label-Small-font {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+@mixin label-X-Small-font {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@mixin paragraph-Large-font {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+@mixin paragraph-Medium-font {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@mixin paragraph-Small-font {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@mixin paragraph-X-Small-font {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+}
