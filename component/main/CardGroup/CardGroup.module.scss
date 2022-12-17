@@ -1,0 +1,32 @@
+@import "styles/styleGuide.module.scss";
+
+.container {
+  width: 100%;
+  padding: 20px 0 20px 0;
+  border-top: 1px solid $grey300;
+}
+
+.header {
+  display: flex;
+}
+
+.icon {
+  margin-right: 12px;
+  svg {
+    fill: $main100;
+  }
+}
+
+.title {
+  @include heading-Small-font;
+  color: $main100;
+  margin-bottom: 12px;
+}
+
+.card__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+  grid-column-gap: 18px;
+  grid-row-gap: 18px;
+
+}
