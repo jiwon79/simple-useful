@@ -12,9 +12,6 @@ interface LayoutProps {
 const RootLayout = ({ children }: LayoutProps) => {
   return (
     <html>
-      <head>
-        <title>Simple Useful</title>
-      </head>
       <body>
         <Header/>
         <main className={styles.main}>{children}</main>
