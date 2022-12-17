@@ -12,22 +12,30 @@ $grey800: #464646;
 $baseWhite: #FFFFFF;
 $baseWarning: #FB6F43;
 $baseNormalGray: #E6E6E6;
+$main100: #A555EC;
+$main200: #D09CFA;
+$main300: #F3CCFF;
+$main400: #FFFFD0;
 
 :export {
-    grey100: $grey100;
-    grey150: $grey150;
-    grey200: $grey200;
-    grey250: $grey250;
-    grey300: $grey300;
-    grey400: $grey400;
-    grey500: $grey500;
-    grey600: $grey600;
-    grey650: $grey650;
-    grey700: $grey700;
-    grey800: $grey800;
-    baseWhite: $baseWhite;
-    baseWarning: $baseWarning;
-    baseNormalGray: $baseNormalGray;
+  grey100: $grey100;
+  grey150: $grey150;
+  grey200: $grey200;
+  grey250: $grey250;
+  grey300: $grey300;
+  grey400: $grey400;
+  grey500: $grey500;
+  grey600: $grey600;
+  grey650: $grey650;
+  grey700: $grey700;
+  grey800: $grey800;
+  baseWhite: $baseWhite;
+  baseWarning: $baseWarning;
+  baseNormalGray: $baseNormalGray;
+  main100: $main100;
+  main200: $main200;
+  main300: $main300;
+  main400: $main400;
 }
 
 // font-profile
@@ -95,6 +103,12 @@ $baseNormalGray: #E6E6E6;
   font-weight: 700;
   font-size: 20px;
   line-height: 28px;
+}
+
+@mixin heading-XX-Small-font {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 @mixin label-X-Large-font {
