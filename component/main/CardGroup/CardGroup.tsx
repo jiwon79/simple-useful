@@ -24,8 +24,8 @@ const CardGroup = ({ title, icon, cards }: CardGroupProps) => {
         </p>
       </div>
       <div className={styles.card__wrapper}>
-        {cards.map((card) => (
-          <Card {...card} />
+        {cards.map((card, idx) => (
+          <Card {...card} key={idx} />
         ))}
       </div>
     </div>
