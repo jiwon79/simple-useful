@@ -8,7 +8,7 @@
 
 .header {
   display: flex;
-  margin-bottom: 12px;
+  margin: 0 0 18px 6px;
 }
 
 .icon {
@@ -21,7 +21,6 @@
 .title {
   @include heading-24;
   color: $main100;
-  margin-bottom: 12px;
 }
 
 .card__wrapper {
