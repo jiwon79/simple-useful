@@ -9,14 +9,17 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const RootLayout = ({ children }: LayoutProps) => {
+const RootLayout = ({children}: LayoutProps) => {
   return (
     <html>
-      <body>
-        <Header/>
+    <head>
+      <link rel="icon" href="/favicon.png"/>
+    </head>
+    <body>
+      <Header/>
         <main className={styles.main}>{children}</main>
-        <Footer/>
-      </body>
+      <Footer/>
+    </body>
     </html>
   )
 }

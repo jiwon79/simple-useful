@@ -1,5 +1,10 @@
 import CardGroup from "../component/main/CardGroup/CardGroup";
 import { CardProps } from "component/main/Card/Card";
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Simple Useful',
+}
 
 export default function Home() {
   const etcCards: CardProps[] = [
