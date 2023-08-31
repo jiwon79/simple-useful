@@ -8,11 +8,11 @@ $grey500: #9198A4;
 $grey600: #7B818E;
 $grey650: #626575;
 $grey700: #494B53;
-$grey800: #464646;
+$grey800: #2e2e2e;
 $baseWhite: #FFFFFF;
 $baseWarning: #FB6F43;
 $baseNormalGray: #E6E6E6;
-$main100: #A555EC;
+$main100: #ac55ff;
 $main200: #D09CFA;
 $main300: #F3CCFF;
 $main400: #FFFFD0;
@@ -39,127 +39,127 @@ $main400: #FFFFD0;
 }
 
 // font-profile
-@mixin display-X-Large-font {
+@mixin display-96 {
   font-weight: 900;
   font-size: 96px;
   line-height: 118px;
 }
 
-@mixin display-Large-font {
+@mixin display-64 {
   font-weight: 700;
   font-size: 64px;
   line-height: 78px;
 }
 
-@mixin display-Medium-font {
+@mixin display-52 {
   font-weight: 700;
   font-size: 52px;
   line-height: 64px;
 }
 
-@mixin display-Small-font {
+@mixin display-44 {
   font-weight: 700;
   font-size: 44px;
   line-height: 52px;
 }
 
-@mixin display-X-Small-font {
+@mixin display-36 {
   font-weight: 700;
   font-size: 36px;
   line-height: 44px;
 }
 
-@mixin heading-XX-Large-font {
-  font-weight: 700;
+@mixin heading-40 {
+  font-weight: 600;
   font-size: 40px;
   line-height: 52px;
 }
 
-@mixin heading-X-Large-font {
-  font-weight: 700;
+@mixin heading-36 {
+  font-weight: 600;
   font-size: 36px;
   line-height: 44px;
 }
 
-@mixin heading-Large-font {
-  font-weight: 700;
+@mixin heading-32 {
+  font-weight: 600;
   font-size: 32px;
   line-height: 40px;
 }
 
-@mixin heading-Medium-font {
-  font-weight: 700;
+@mixin heading-28 {
+  font-weight: 600;
   font-size: 28px;
   line-height: 36px;
 }
 
-@mixin heading-Small-font {
-  font-weight: 700;
+@mixin heading-24 {
+  font-weight: 600;
   font-size: 24px;
   line-height: 32px;
 }
 
-@mixin heading-X-Small-font {
-  font-weight: 700;
+@mixin heading-20 {
+  font-weight: 600;
   font-size: 20px;
   line-height: 28px;
 }
 
-@mixin heading-XX-Small-font {
-  font-weight: 700;
+@mixin heading-16 {
+  font-weight: 600;
   font-size: 16px;
   line-height: 24px;
 }
 
-@mixin label-X-Large-font {
+@mixin label-20 {
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
 }
 
-@mixin label-Large-font {
+@mixin label-18 {
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
 }
 
-@mixin label-Medium-font {
+@mixin label-16 {
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
 }
 
-@mixin label-Small-font {
+@mixin label-14 {
   font-weight: 700;
   font-size: 14px;
   line-height: 16px;
 }
 
-@mixin label-X-Small-font {
+@mixin label-12 {
   font-weight: 700;
   font-size: 12px;
   line-height: 16px;
 }
 
-@mixin paragraph-Large-font {
+@mixin paragraph-18 {
   font-weight: 400;
   font-size: 18px;
   line-height: 28px;
 }
 
-@mixin paragraph-Medium-font {
+@mixin paragraph-16 {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
 }
 
-@mixin paragraph-Small-font {
+@mixin paragraph-14 {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 }
 
-@mixin paragraph-X-Small-font {
+@mixin paragraph-12 {
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;

@@ -8,21 +8,23 @@
   padding: 12px;
   background-color: $baseWhite;
   border-radius: 6px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.02);
 
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   &:hover {
-    transform: translateY(-6px);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
   }
 }
 
 .title {
-  @include heading-X-Small-font;
+  @include heading-20;
+  color: $grey800;
   border-bottom: 1px solid $grey300;
 }
 
 .desc {
-  @include paragraph-Medium-font;
+  @include paragraph-16;
   color: $grey700;
   margin-top: 12px;
 }

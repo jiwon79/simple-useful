@@ -7,7 +7,7 @@
   color: $grey700;
 
   p {
-    @include paragraph-Medium-font;
+    @include paragraph-16;
     margin: 2px 0 2px 0;
   }
 }

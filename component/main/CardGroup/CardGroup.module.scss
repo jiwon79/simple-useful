@@ -2,12 +2,13 @@
 
 .container {
   width: 100%;
-  padding: 20px 0 20px 0;
-  border-top: 1px solid $grey300;
+  padding: 16px 0 32px 0;
+  border-top: 1px solid $grey250;
 }
 
 .header {
   display: flex;
+  margin-bottom: 12px;
 }
 
 .icon {
@@ -18,7 +19,7 @@
 }
 
 .title {
-  @include heading-Small-font;
+  @include heading-24;
   color: $main100;
   margin-bottom: 12px;
 }
