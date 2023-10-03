@@ -2,7 +2,7 @@ import React from "react";
 
 import Footer from "component/common/Footer/Footer";
 import Header from "component/common/Header/Header";
-import StyleSheet from "@/component/common/StyleSheet";
+import StitchesProvider from "@/component/common/StitchesProvider";
 import 'styles/globals.scss'
 import styles from "./layout.module.scss";
 
@@ -16,12 +16,13 @@ const RootLayout = ({children}: LayoutProps) => {
     <head>
       <title>Simple Useful</title>
       <link rel="icon" href="/favicon.png"/>
-      <StyleSheet/>
     </head>
     <body>
+    <StitchesProvider>
       <Header/>
-        <main className={styles.main}>{children}</main>
+      <main className={styles.main}>{children}</main>
       <Footer/>
+    </StitchesProvider>
     </body>
     </html>
   )
