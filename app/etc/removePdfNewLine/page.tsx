@@ -1,15 +1,16 @@
 "use client"
 import { ChangeEvent, useState } from "react";
-import PdfTextField from "@/component/etc/removePdfNewLine/PdfTextField";
 import { styled } from "@/stitches.config";
+import PdfTextField from "@/component/etc/removePdfNewLine/PdfTextField";
+import IconLink from "@/component/etc/removePdfNewLine/IconLink";
 
 const RemovePdfNewLinePage = () => {
   const [text, setText] = useState<string>("");
-  const [beforeText, setBeforeText] = useState<string>("");
 
-  const handleBeforeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setBeforeText(e.target.value);
-  }
+  const removedText = text.replaceAll("\n", " ");
+  const papagoLink = `https://papago.naver.com/?sk=en&tk=ko&hn=1&st=${removedText}`
+  const googleTranslateLink = `https://translate.google.co.kr/?hl=ko&sl=en&tl=ko&text=${removedText}&op=translate`
+  const deeplLink = `https://www.deepl.com/translator#en/ko/${removedText}`
 
   return (
     <Wrap>
@@ -17,7 +18,11 @@ const RemovePdfNewLinePage = () => {
 
       <TextFiledWrap>
         <PdfTextField name="Before" text={text} setText={setText}/>
-        <PdfTextField name="After" text={text.replaceAll("\n", " ")} setText={null}/>
+        <PdfTextField name="After" text={text.replaceAll("\n", " ")} setText={null}>
+          <IconLink href={papagoLink} icon={"papago"}/>
+          <IconLink href={googleTranslateLink} icon={"google_translate"}/>
+          <IconLink href={deeplLink} icon={"deepl"}/>
+        </PdfTextField>
       </TextFiledWrap>
     </Wrap>
   );
@@ -37,6 +42,7 @@ const Wrap = styled("div", {
 const TextFiledWrap = styled("div", {
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
+  gap: "24px",
 });
 
 export default RemovePdfNewLinePage;

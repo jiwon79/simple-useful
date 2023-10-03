@@ -5,9 +5,10 @@ interface PdfTextFieldProps {
   name: string;
   text: string;
   setText: (text: string) => void | null;
+  children?: React.ReactNode;
 }
 
-const PdfTextField = ({name, text, setText}: PdfTextFieldProps) => {
+const PdfTextField = ({name, text, setText, children}: PdfTextFieldProps) => {
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (!setText) return;
     setText(e.target.value);
@@ -15,13 +16,16 @@ const PdfTextField = ({name, text, setText}: PdfTextFieldProps) => {
 
   return (
     <Wrap>
-      <Name>{name}</Name>
-    <TextFiled
-      onChange={onChange}
-      value={text}
-      cols={30}
-      rows={10}
-    />
+      <Header>
+        <Title>{name}</Title>
+        {children}
+      </Header>
+      <TextFiled
+        onChange={onChange}
+        value={text}
+        cols={30}
+        rows={10}
+      />
     </Wrap>
   );
 }
@@ -29,10 +33,17 @@ const PdfTextField = ({name, text, setText}: PdfTextFieldProps) => {
 const Wrap = styled("div", {
   display: "flex",
   flexDirection: "column",
-
 });
 
-const Name = styled("h2", {
+const Header = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  gap: "12px",
+  height: "40px",
+  marginBottom: "6px",
+});
+
+const Title = styled("h2", {
   heading_20: true,
   marginBottom: "6px",
 });
