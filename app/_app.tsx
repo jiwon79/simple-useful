@@ -1,11 +1,10 @@
-import App from 'next/app'
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Script from "next/script";
 
 import * as ga from 'lib/ga';
 
-function app({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
@@ -44,10 +43,10 @@ function app({ Component, pageProps }) {
   );
 }
 
-app.getInitialProps = async (appContext) => {
+App.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext);
 
   return { ...appProps }
 }
 
-export default app;
+export default App;
