@@ -21,7 +21,7 @@ const GaProvider = ({code, children}: { code: string, children: ReactNode }) => 
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
  
-          gtag('config', 'GA_MEASUREMENT_ID');
+          gtag('config', '${code}');
         `}
       </Script>
       {children}
