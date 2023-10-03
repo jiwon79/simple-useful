@@ -2,9 +2,9 @@ import React from "react";
 
 import Footer from "component/common/Footer/Footer";
 import Header from "component/common/Header/Header";
+import StyleSheet from "@/component/common/StyleSheet";
 import 'styles/globals.scss'
 import styles from "./layout.module.scss";
-import { getCssText } from "@/stitches.config";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ const RootLayout = ({children}: LayoutProps) => {
     <head>
       <title>Simple Useful</title>
       <link rel="icon" href="/favicon.png"/>
-      <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+      <StyleSheet/>
     </head>
     <body>
       <Header/>
