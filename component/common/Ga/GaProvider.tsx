@@ -1,20 +1,15 @@
-import { useRouter } from "next/router";
+"use client";
 import { ReactNode, useEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import * as ga from "@lib/ga";
 
 const GaProvider = ({ children }: { children: ReactNode }) => {
-  const router = useRouter();
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
-    const handleRouteChange = url => {
-      ga.pageview(url);
-    };
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
+    ga.pageview( `${pathname}?${searchParams}`);
+  }, [pathname, searchParams])
 
   return (
     <>{children}</>
