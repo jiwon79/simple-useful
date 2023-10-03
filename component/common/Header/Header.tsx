@@ -4,16 +4,18 @@ import styles from './Header.module.scss';
 const Header = () => {
   return (
     <header className={styles.header}>
-      <div>
-        <Image
-          src="/favicon.png"
-          width={32}
-          height={32}
-          alt={"web logo"}
-          className={styles.logo}
-        />
-        <p className={styles.title}>Simple & Useful</p>
-      </div>
+      <a href="/">
+        <div>
+          <Image
+            src="/favicon.png"
+            width={32}
+            height={32}
+            alt={"web logo"}
+            className={styles.logo}
+          />
+          <p className={styles.title}>Simple & Useful</p>
+        </div>
+      </a>
 
       <div>
         <div className={styles.icon}>
