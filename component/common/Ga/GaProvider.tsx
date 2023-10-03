@@ -1,18 +1,31 @@
 "use client";
 import { ReactNode, useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import * as ga from "@lib/ga";
+import * as ga from "@/component/common/Ga/ga";
+import Script from "next/script";
 
-const GaProvider = ({ children }: { children: ReactNode }) => {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+const GaProvider = ({code, children}: { code: string, children: ReactNode }) => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    ga.pageview( `${pathname}?${searchParams}`);
-  }, [pathname, searchParams])
+    ga.pageView(`${pathname}?${searchParams}`);
+  }, [pathname, searchParams]);
 
   return (
-    <>{children}</>
+    <>
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${code}`}/>
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'GA_MEASUREMENT_ID');
+        `}
+      </Script>
+      {children}
+    </>
   );
 }
 
