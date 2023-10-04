@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   const mathCards: CardProps[] = [
-    { name: "Magic Mixer", desc: "Magic Mixer", href: "/math/magic-mixer" },
+    { name: "Magi Mixer", desc: "Magi Mixer", href: "/math/magi-mixer" },
   ];
   const etcCards: CardProps[] = [
     { name: "Remove New Line", desc: "Remove new line when copy paste in pdf file", href: "/etc/removePdfNewLine" },
