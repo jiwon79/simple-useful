@@ -4,7 +4,7 @@ import { styled } from "@/stitches.config";
 
 addStyles();
 
-const MathEditor = ({mathField, handleMathField}) => {
+export const MathEditor = ({mathField, handleMathField}) => {
   return (
     <MathField
       latex={mathField?.latex() ?? ''}
@@ -20,5 +20,3 @@ const MathField = styled(EditableMathField, {
   height: "60px",
   resize: "none",
 })
-
-export default MathEditor;
