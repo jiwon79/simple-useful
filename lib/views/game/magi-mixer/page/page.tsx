@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { MathField } from "react-mathquill";
-import { NumberGroup, MathEditor, MathButtonGroup } from "lib/views/game/magi-mixer/components";
+import { useEffect, useState } from "react";
 import { evaluate } from "mathjs";
+import { NumberGroup, MathEditor, MathButtonGroup } from "../components";
+import { useMathField } from "../hooks";
 
 interface ExpressionResult {
   result: number;
@@ -10,29 +10,9 @@ interface ExpressionResult {
 }
 
 export const MagiMixerPage = () => {
-  const mathFieldRef = useRef<MathField>();
-  const [latex, setLatex] = useState<string>('');
+  const {latex, mathField, handleMathField, cmd, keystroke} = useMathField();
   const [expressionResult, setExpressionResult] = useState<ExpressionResult>({result: 0, error: false, errorMsg: ''});
   const [used, setUsed] = useState<number[]>([]);
-
-  const handleMathField = (mathField: MathField) => {
-    mathFieldRef.current = mathField;
-    setLatex(mathField.latex());
-  }
-
-  const cmd = (cmd: string) => {
-    if (mathFieldRef.current === undefined) return;
-    mathFieldRef.current.cmd(cmd)
-    mathFieldRef.current.focus();
-    setLatex(mathFieldRef.current.latex() ?? '')
-  }
-
-  const keystroke = (key: string) => {
-    if (mathFieldRef.current === undefined) return;
-    mathFieldRef.current.focus();
-    mathFieldRef.current.keystroke(key)
-    setLatex(mathFieldRef.current.latex() ?? '')
-  }
 
   useEffect(() => {
     const result = evaluateLatexExpression(latex)
@@ -46,7 +26,7 @@ export const MagiMixerPage = () => {
       <NumberGroup inputs={[1, 2, 3, 4, 5]} outputs={[3, 6]} used={used}/>
       <div>
         <MathEditor
-          mathField={mathFieldRef.current}
+          mathField={mathField}
           handleMathField={handleMathField}
         />
         <p>=</p>
