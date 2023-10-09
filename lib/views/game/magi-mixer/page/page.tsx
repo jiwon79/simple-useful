@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MathField } from "react-mathquill";
-import { NumberGroup, MathEditor, MathButtonGroup } from "@lib/views/game/magi-mixer/component";
+import { NumberGroup, MathEditor, MathButtonGroup } from "lib/views/game/magi-mixer/components";
 import { evaluate } from "mathjs";
 
 interface ExpressionResult {
