@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { MathField } from "react-mathquill";
-import { Number, MathEditor, MathButtonGroup } from "@/component/math/magi-mixer";
+import { NumberGroup, MathEditor, MathButtonGroup } from "@/component/math/magi-mixer";
 
 const MagiMixerPage = () => {
   const mathFieldRef = useRef<MathField>();
@@ -28,8 +28,7 @@ const MagiMixerPage = () => {
 
   return (
     <>
-      <Number number={1}/>
-      <Number number={1} isUsed={true}/>
+      <NumberGroup inputs={[1, 2, 3, 4, 5]} outputs={[3, 6]} used={[2, 2, 3]}/>
       <MathEditor mathField={mathFieldRef.current} handleMathField={handleMathField}/>
       <p>{value}</p>
       <MathButtonGroup cmd={cmd} keystroke={keystroke}/>

@@ -47,10 +47,20 @@ export const {styled, getCssText} = createStitches({
       fontSize: '16px',
       lineHeight: '24px',
     }),
+    paragraph_21: () => ({
+      fontWeight: 400,
+      fontSize: '21px',
+      lineHeight: '32px',
+    }),
     paragraph_18: () => ({
       fontWeight: 400,
       fontSize: '18px',
       lineHeight: '28px',
-    })
+    }),
+    label_18: () => ({
+      fontWeight: 600,
+      fontSize: '18px',
+      lineHeight: '24px',
+    }),
   }
 });

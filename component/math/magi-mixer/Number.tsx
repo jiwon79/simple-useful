@@ -12,7 +12,7 @@ export const Number = ({number, isUsed}: NumberProps) => {
 }
 
 const NumberText = styled("span", {
-  paragraph_18: true,
+  label_18: true,
   color: "$grey900",
   width: "36px",
   height: "36px",
@@ -23,12 +23,15 @@ const NumberText = styled("span", {
   flexShrink: 0,
   border: "1px solid $grey600",
   borderRadius: "100px",
+  transition: "all 0.1s ease-in-out",
 
   variants: {
     isUsed: {
       true: {
+        paragraph_18: true,
         textDecoration: "line-through",
-        color: "$grey600"
+        color: "$grey400",
+        border: "1px solid $grey400",
       }
     }
   }
