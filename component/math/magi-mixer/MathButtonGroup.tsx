@@ -37,6 +37,7 @@ export const MathButtonGroup = ({cmd, keystroke}: MathButtonWrapProps) => {
         <MathButton onClick={() => keystroke("Down")} text={"↓"}/>
         <MathButton onClick={() => keystroke("Left")} text={"←"}/>
         <MathButton onClick={() => keystroke("Right")} text={"→"}/>
+        <MathButton onClick={() => keystroke("Backspace")} text={"DEL"}/>
       </Row>
     </Group>
   );
