@@ -7,8 +7,11 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  const mathCards: CardProps[] = [
-    { name: "Magi Mixer", desc: "Magi Mixer", href: "/math/magi-mixer" },
+  // const mathCards: CardProps[] = [
+  //   { name: "Magi Mixer", desc: "Magi Mixer", href: "/math/magi-mixer" },
+  // ];
+  const gameCards: CardProps[] = [
+    { name: "Magi Mixer", desc: "Magi Mixer", href: "/game/magi-mixer" },
   ];
   const etcCards: CardProps[] = [
     { name: "Remove New Line", desc: "Remove new line when copy paste in pdf file", href: "/etc/removePdfNewLine" },
@@ -19,7 +22,7 @@ export default function Home() {
 
   return (
     <>
-      <CardGroup title={"MATH"} icon={"/icon/ic_home_etc.svg"} cards={mathCards} />
+      <CardGroup title={"GAME"} icon={"/icon/ic_home_etc.svg"} cards={gameCards} />
       <CardGroup title={"ETC"} icon={"/icon/ic_home_etc.svg"} cards={etcCards} />
     </>
   )
