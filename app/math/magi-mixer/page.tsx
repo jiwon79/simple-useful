@@ -4,52 +4,69 @@ import { MathField } from "react-mathquill";
 import { NumberGroup, MathEditor, MathButtonGroup } from "@/component/math/magi-mixer";
 import { evaluate } from "mathjs";
 
+interface ExpressionResult {
+  result: number;
+  error: boolean;
+  errorMsg: string;
+}
+
 const MagiMixerPage = () => {
   const mathFieldRef = useRef<MathField>();
-  const [value, setValue] = useState<string>('');
+  const [latex, setLatex] = useState<string>('');
+  const [expressionResult, setExpressionResult] = useState<ExpressionResult>({result: 0, error: false, errorMsg: ''});
+  const [used, setUsed] = useState<number[]>([]);
 
   const handleMathField = (mathField: MathField) => {
     mathFieldRef.current = mathField;
-    setValue(mathField.latex());
+    setLatex(mathField.latex());
   }
 
   const cmd = (cmd: string) => {
     if (mathFieldRef.current === undefined) return;
     mathFieldRef.current.cmd(cmd)
     mathFieldRef.current.focus();
-    setValue(mathFieldRef.current.latex() ?? '')
+    setLatex(mathFieldRef.current.latex() ?? '')
   }
 
   const keystroke = (key: string) => {
     if (mathFieldRef.current === undefined) return;
     mathFieldRef.current.focus();
     mathFieldRef.current.keystroke(key)
-    setValue(mathFieldRef.current.latex() ?? '')
+    setLatex(mathFieldRef.current.latex() ?? '')
   }
 
   useEffect(() => {
-    const result = evaluateLatexExpression(value)
-  }, [value])
+    const result = evaluateLatexExpression(latex)
+    const numbers = extractNumbers(latex)
+    setUsed(numbers)
+    setExpressionResult(result)
+  }, [latex])
 
   return (
     <>
-      <NumberGroup inputs={[1, 2, 3, 4, 5]} outputs={[3, 6]} used={[2, 2, 3]}/>
+      <NumberGroup inputs={[1, 2, 3, 4, 5]} outputs={[3, 6]} used={used}/>
       <div>
         <MathEditor
           mathField={mathFieldRef.current}
           handleMathField={handleMathField}
         />
         <p>=</p>
-        <p>1</p>
+        <p>{expressionResult.result}</p>
 
       </div>
-      <p>{value}</p>
+      <p>{expressionResult.errorMsg}</p>
       <MathButtonGroup cmd={cmd} keystroke={keystroke}/>
     </>
   )
 }
 
-function evaluateLatexExpression(expression): { result: number, error: boolean, errorMsg: string } {
+function extractNumbers(str) {
+  const numbers = str.match(/\d/g);
+
+  return numbers ? numbers.map(Number) : [];
+}
+
+function evaluateLatexExpression(expression): ExpressionResult {
   if (expression.trim() === '') return {result: 0, error: false, errorMsg: ''};
 
   const continueNumberRegex = /\d{2}/;
