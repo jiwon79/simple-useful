@@ -15,6 +15,10 @@ export const MathButton = ({onClick, text}: MathButtonProps) => {
 
 const Button = styled("button", {
   paragraph_18: true,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexShrink: 0,
   cursor: "pointer",
   width: "36px",
   height: "36px",
