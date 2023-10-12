@@ -17,11 +17,12 @@ const getRandomOutputs = () => getRandomNumber(1, 6, 2);
 export function useGameNumber() {
   const [inputs, setInputs] = useState<number[]>(getRandomInputs());
   const [outputs, setOutputs] = useState<number[]>(getRandomOutputs());
+  const outputNumber = outputs[0] * 10 + outputs[1];
 
   const reset = () => {
     setInputs(getRandomInputs());
     setOutputs(getRandomOutputs());
   }
 
-  return {inputs, outputs, reset};
+  return {inputs, outputs, outputNumber, reset};
 }
