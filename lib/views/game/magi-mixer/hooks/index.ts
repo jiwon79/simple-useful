@@ -1,3 +1,3 @@
 export * from "./useMathField";
 export * from "./useEvaluateExpression";
-export * from "./useSendResult";
+export * from "./useSendResultToServer";
