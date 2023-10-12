@@ -1,7 +1,7 @@
 export function useSendResultToServer(input: number[], output: number[]) {
   const time = new Date().toISOString();
   const sheetName = "magi-mixer";
-  const inputString = input.sort().join(",");
+  const inputString = [...input].sort().join(",");
   const outputString = output.join("");
 
   const sendSuccess = async (latex: string) => {
