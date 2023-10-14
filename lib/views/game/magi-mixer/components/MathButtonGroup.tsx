@@ -22,6 +22,7 @@ export const MathButtonGroup = ({cmd, keystroke}: MathButtonWrapProps) => {
         <MathButton onClick={() => cmd("-")} text={"-"}/>
         <MathButton onClick={() => cmd("*")} text={"*"}/>
         <MathButton onClick={() => cmd("/")} text={"/"}/>
+        <MathButton onClick={() => cmd("^")} text={"^"}/>
         <MathButton onClick={() => cmd("\\sqrt")} text={"√"}/>
       </Row>
       <Row>
