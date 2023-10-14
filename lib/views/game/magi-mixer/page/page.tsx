@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import { NumberGroup, MathEditor, MathButtonGroup, MathExpression } from "../components";
 import { useEvaluateExpression, useGameNumber, useMathField, useSendResultToServer } from "../hooks";
 import { isSameNumberArray } from "@lib/utils/array";
+import { styled } from "@/stitches.config";
 
 export const MagiMixerPage = () => {
   const {latex, mathField, handleMathField, cmd, keystroke} = useMathField();
@@ -24,16 +25,22 @@ export const MagiMixerPage = () => {
 
   return (
     <>
-      <button onClick={onSuccess} disabled={!isSuccess}>제출하기</button>
-      <button onClick={onFail}>불가능</button>
-      <button onClick={reset}>숫자 바꾸기</button>
       <NumberGroup inputs={inputs} outputs={outputs} used={used}/>
       <MathExpression
         mathEditor={<MathEditor mathField={mathField} handleMathField={handleMathField}/>}
         result={result}
       />
-      <p>{errorMsg}</p>
+      <ErrorText>{errorMsg}</ErrorText>
       <MathButtonGroup cmd={cmd} keystroke={keystroke}/>
+      <button onClick={onSuccess} disabled={!isSuccess}>제출하기</button>
+      <button onClick={onFail}>불가능</button>
+      <button onClick={reset}>숫자 바꾸기</button>
     </>
   )
 }
+
+const ErrorText = styled("p", {
+  paragraph_14: true,
+  height: "20px",
+  marginTop: '4px',
+});
