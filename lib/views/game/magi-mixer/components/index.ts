@@ -1,4 +1,5 @@
 export * from "./ActionButtonGroup";
+export * from "./Description";
 export * from "./Number";
 export * from "./NumberGroup";
 export * from "./MathButton";

@@ -1,5 +1,12 @@
 import { toast } from 'react-toastify';
-import { NumberGroup, MathEditor, MathButtonGroup, MathExpression, ActionButtonGroup } from "../components";
+import {
+  NumberGroup,
+  MathEditor,
+  MathButtonGroup,
+  MathExpression,
+  ActionButtonGroup,
+  Description
+} from "../components";
 import { useEvaluateExpression, useGameNumber, useMathField, useSendResultToServer } from "../hooks";
 import { isSameNumberArray } from "@lib/utils/array";
 import { styled } from "@/stitches.config";
@@ -33,6 +40,7 @@ export const MagiMixerPage = () => {
       <ErrorText>{errorMsg}</ErrorText>
       <MathButtonGroup cmd={cmd} keystroke={keystroke}/>
       <ActionButtonGroup onSuccess={onSuccess} onFail={onFail} reset={reset} isSuccess={isSuccess}/>
+      <Description/>
     </>
   )
 }
