@@ -10,7 +10,7 @@ interface ActionButtonGroupProps {
 export const ActionButtonGroup = ({onSuccess, onFail, reset, isSuccess}: ActionButtonGroupProps) => {
   return (
     <Wrap>
-      <Button type="primary" onClick={onSuccess} disabled={isSuccess}>제출하기</Button>
+      <Button type="primary" onClick={onSuccess} disabled={!isSuccess}>제출하기</Button>
       <Button type="secondary" onClick={onFail}>불가능</Button>
       <Button type="secondary" onClick={reset}>숫자 바꾸기</Button>
     </Wrap>
@@ -36,6 +36,10 @@ const Button = styled("button", {
     type: {
       primary: {
         backgroundColor: "$main300",
+        border: "1px solid $main200",
+        ['&:disabled']: {
+          color: "$grey500",
+        }
       },
       secondary: {
         backgroundColor: "$grey200",

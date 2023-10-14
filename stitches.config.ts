@@ -23,7 +23,7 @@ export const {styled, getCssText} = createStitches({
       main100: '#ac55ff',
       main200: '#D09CFA',
       main300: '#F3CCFF',
-      main400: '#FFFFD0',
+      main400: '#f6e9ff',
     },
     fontSizes: {
       1: '13px',
