@@ -15,8 +15,9 @@ export const MathEditor = ({mathField, handleMathField}) => {
 
 const MathField = styled(EditableMathField, {
   display: "inline-flex",
-  padding: "0 20px",
-  width: "400px",
-  height: "60px",
+  alignItems: "center",
+  padding: "8px 4px",
+  width: "300px",
+  height: "40px",
   resize: "none",
 })

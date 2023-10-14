@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { NumberGroup, MathEditor, MathButtonGroup } from "../components";
+import { NumberGroup, MathEditor, MathButtonGroup, MathExpression } from "../components";
 import { useEvaluateExpression, useGameNumber, useMathField, useSendResultToServer } from "../hooks";
 import { isSameNumberArray } from "@lib/utils/array";
 
@@ -28,15 +28,10 @@ export const MagiMixerPage = () => {
       <button onClick={onFail}>불가능</button>
       <button onClick={reset}>숫자 바꾸기</button>
       <NumberGroup inputs={inputs} outputs={outputs} used={used}/>
-      <div>
-        <MathEditor
-          mathField={mathField}
-          handleMathField={handleMathField}
-        />
-        <p>=</p>
-        <p>{result}</p>
-
-      </div>
+      <MathExpression
+        mathEditor={<MathEditor mathField={mathField} handleMathField={handleMathField}/>}
+        result={result}
+      />
       <p>{errorMsg}</p>
       <MathButtonGroup cmd={cmd} keystroke={keystroke}/>
     </>
