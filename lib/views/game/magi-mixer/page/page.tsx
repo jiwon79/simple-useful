@@ -10,6 +10,7 @@ import {
 import { useEvaluateExpression, useGameNumber, useMathField, useSendResultToServer } from "../hooks";
 import { isSameNumberArray } from "@lib/utils/array";
 import { styled } from "@/stitches.config";
+import { PageLayout } from "@views/common/layout";
 
 export const MagiMixerPage = () => {
   const {latex, mathField, handleMathField, cmd, keystroke} = useMathField();
@@ -31,7 +32,7 @@ export const MagiMixerPage = () => {
   }
 
   return (
-    <>
+    <PageLayout>
       <NumberGroup inputs={inputs} outputs={outputs} used={used}/>
       <MathExpression
         mathEditor={<MathEditor mathField={mathField} handleMathField={handleMathField}/>}
@@ -41,7 +42,7 @@ export const MagiMixerPage = () => {
       <MathButtonGroup cmd={cmd} keystroke={keystroke}/>
       <ActionButtonGroup onSuccess={onSuccess} onFail={onFail} reset={reset} isSuccess={isSuccess}/>
       <Description/>
-    </>
+    </PageLayout>
   )
 }
 

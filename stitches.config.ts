@@ -1,6 +1,11 @@
 import { createStitches } from '@stitches/react';
 
 export const {styled, getCssText} = createStitches({
+  media: {
+    mobile: '(max-width: 400px)',
+    tablet: '(max-width: 768px)',
+    desktop: '(max-width: 1024px)',
+  },
   theme: {
     fonts: {
       system: 'system-ui',

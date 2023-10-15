@@ -43,6 +43,7 @@ export const NumberGroup = ({inputs, outputs, used}: NumberGroupProps) => {
 const Wrap = styled("div", {
   display: "flex",
   alignItems: "center",
+  marginBottom: "12px",
 })
 
 const Equal = styled("p", {
