@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import styles from './Header.module.scss';
+import styles from '../../../../component/common/Header/Header.module.scss';
 
-const Header = () => {
+export const Header = () => {
   return (
     <header className={styles.header}>
       <a href="/">
@@ -38,5 +38,3 @@ const Header = () => {
     </header>
   )
 }
-
-export default Header

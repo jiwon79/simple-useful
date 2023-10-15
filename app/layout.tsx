@@ -1,8 +1,8 @@
 import React from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 import Footer from "component/common/Footer/Footer";
-import Header from "component/common/Header/Header";
+import { Header } from "@views/common/components";
 import StitchesProvider from "@/component/common/StitchesProvider";
 import GaProvider from "@/component/common/Ga/GaProvider";
 import styles from "./layout.module.scss";
