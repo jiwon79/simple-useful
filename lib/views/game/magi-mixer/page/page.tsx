@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify';
 import {
   NumberGroup,
-  MathEditor,
   MathButtonGroup,
   MathExpression,
   ActionButtonGroup,
@@ -11,6 +10,12 @@ import { useEvaluateExpression, useGameNumber, useMathField, useSendResultToServ
 import { isSameNumberArray } from "@lib/utils/array";
 import { styled } from "@/stitches.config";
 import { PageLayout } from "@views/common/layout";
+import dynamic from "next/dynamic";
+
+const DynamicMathEditor = dynamic(
+  () => import("../components/MathEditor").then((mod) => mod.MathEditor),
+  {ssr: false},
+);
 
 export const MagiMixerPage = () => {
   const {latex, mathField, handleMathField, cmd, keystroke} = useMathField();
@@ -35,7 +40,7 @@ export const MagiMixerPage = () => {
     <PageLayout>
       <NumberGroup inputs={inputs} outputs={outputs} used={used}/>
       <MathExpression
-        mathEditor={<MathEditor mathField={mathField} handleMathField={handleMathField}/>}
+        mathEditor={<DynamicMathEditor mathField={mathField} handleMathField={handleMathField}/>}
         result={result}
       />
       <ErrorText>{errorMsg}</ErrorText>
