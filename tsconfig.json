@@ -29,6 +29,10 @@
         "@components/*": ["components/*"],
         "@app/*": ["app/*"],
         "@lib/*": ["lib/*"],
+        "@assets/*": ["lib/assets/*"],
+        "@styles/*": ["lib/styles/*"],
+        "@domains/*": ["lib/domains/*"],
+        "@views/*": ["lib/views/*"],
     }
   },
   "include": [

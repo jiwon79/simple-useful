@@ -1,10 +1,12 @@
 import React from "react";
+import { ToastContainer } from 'react-toastify';
 
 import Footer from "component/common/Footer/Footer";
-import Header from "component/common/Header/Header";
+import { Header } from "@views/common/components";
 import StitchesProvider from "@/component/common/StitchesProvider";
 import GaProvider from "@/component/common/Ga/GaProvider";
 import styles from "./layout.module.scss";
+import 'react-toastify/dist/ReactToastify.css';
 import 'styles/globals.scss'
 
 interface LayoutProps {
@@ -23,6 +25,7 @@ const RootLayout = ({children}: LayoutProps) => {
         <Header/>
         <main className={styles.main}>{children}</main>
         <Footer/>
+        <ToastContainer limit={2}/>
       </StitchesProvider>
     </GaProvider>
     </body>
