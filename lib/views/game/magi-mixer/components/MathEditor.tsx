@@ -14,6 +14,7 @@ const DynamicEditableMathField = dynamic(
 export const MathEditor = ({mathField, handleMathField}) => {
   return (
     <MathField
+      mathquillDidMount={handleMathField}
       latex={mathField?.latex() ?? ''}
       onChange={handleMathField}
     />
