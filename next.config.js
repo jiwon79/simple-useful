@@ -4,7 +4,8 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     appDir: true
-  }
+  },
+  productionBrowserSourceMaps: true,
 }
 
 module.exports = nextConfig

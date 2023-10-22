@@ -1,9 +1,15 @@
-"use client";
 import React from 'react';
-import { addStyles, EditableMathField } from 'react-mathquill';
+import { addStyles } from 'react-mathquill';
 import { styled } from "@/stitches.config";
+import dynamic from "next/dynamic";
 
 addStyles();
+
+const DynamicEditableMathField = dynamic(
+  () => import('react-mathquill')
+    .then((mod) => mod.EditableMathField),
+  {ssr: false}
+);
 
 export const MathEditor = ({mathField, handleMathField}) => {
   return (
@@ -14,7 +20,7 @@ export const MathEditor = ({mathField, handleMathField}) => {
   )
 }
 
-const MathField = styled(EditableMathField, {
+const MathField = styled(DynamicEditableMathField, {
   display: "inline-flex",
   alignItems: "center",
   padding: "8px 4px",
