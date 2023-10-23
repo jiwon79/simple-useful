@@ -11,9 +11,7 @@ const getRandomNumber = (min: number, max: number, length: number) => {
   const numbers: number[] = [];
   while (numbers.length < length) {
     const number = Math.floor(Math.random() * (max - min + 1)) + min;
-    if (!numbers.includes(number)) {
-      numbers.push(number);
-    }
+    numbers.push(number);
   }
   return numbers;
 }
