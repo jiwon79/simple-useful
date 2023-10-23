@@ -26,8 +26,8 @@ export const MathButtonGroup = ({cmd, keystroke}: MathButtonWrapProps) => {
         <MathButton onClick={() => cmd("\\sqrt")} text={"√"}/>
       </Row>
       <Row>
-        <MathButton onClick={() => cmd("\\left")} text={"("}/>
-        <MathButton onClick={() => cmd("\\right")} text={")"}/>
+        <MathButton onClick={() => cmd("(")} text={"("}/>
+        <MathButton onClick={() => cmd(")")} text={")"}/>
         <MathButton onClick={() => cmd("\\lfloor")} text={"⌊"}/>
         <MathButton onClick={() => cmd("\\rfloor")} text={"⌋"}/>
         <MathButton onClick={() => cmd("\\lceil")} text={"⌈"}/>
