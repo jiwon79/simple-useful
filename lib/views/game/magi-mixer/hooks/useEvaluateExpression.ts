@@ -33,6 +33,8 @@ export function useEvaluateExpression(expression: string): UseEvaluateExpression
     .replace(/\\cdot/g, '*')
     .replace(/\\left/g, '(')
     .replace(/\\right/g, ')')
+    .replace(/{/g, '(')
+    .replace(/}/g, ')')
 
   try {
     return success(evaluate(mathExpression));
