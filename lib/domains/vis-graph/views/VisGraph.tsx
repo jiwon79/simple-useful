@@ -1,5 +1,5 @@
 import VisGraphWrapper, { Options } from "react-vis-graph-wrapper";
-import { ViwNetworkEdge, VisNetworkNode } from "../interface"
+import { VisNetworkEdge, VisNetworkNode } from "../interface"
 
 const options: Options = {
   layout: {
@@ -27,7 +27,7 @@ const options: Options = {
 
 interface VisGraphProp {
   nodes: VisNetworkNode[];
-  edges: ViwNetworkEdge[];
+  edges: VisNetworkEdge[];
 }
 
 export const VisGraph = ({nodes, edges}: VisGraphProp) => {

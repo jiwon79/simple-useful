@@ -4,7 +4,7 @@ export interface VisNetworkNode {
   title: string;
 }
 
-export interface ViwNetworkEdge {
+export interface VisNetworkEdge {
   from: string;
   to: string;
   color: string;
