@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/image';
 import styles from '../../../../component/common/Header/Header.module.scss';
 
 export const Header = () => {
@@ -10,7 +10,7 @@ export const Header = () => {
             src="/favicon.png"
             width={32}
             height={32}
-            alt={"web logo"}
+            alt="web logo"
             className={styles.logo}
           />
           <p className={styles.title}>Simple & Useful</p>
@@ -20,21 +20,21 @@ export const Header = () => {
       <div>
         <div className={styles.icon}>
           <Image
-            src={"/icon/dark_mode_black_24dp.svg"}
+            src="/icon/dark_mode_black_24dp.svg"
             width={24}
             height={24}
-            alt={"dark mode"}
+            alt="dark mode"
           />
         </div>
         <div className={styles.icon}>
           <Image
-            src={"/icon/search_black_24dp.svg"}
+            src="/icon/search_black_24dp.svg"
             width={24}
             height={24}
-            alt={"search icon"}
+            alt="search icon"
           />
         </div>
       </div>
     </header>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import { evaluate } from "mathjs";
+import { evaluate } from 'mathjs';
 
 interface UseEvaluateExpression {
   result: number;
@@ -7,17 +7,29 @@ interface UseEvaluateExpression {
   used: number[];
 }
 
-const extractNumbers = (str: string)  => {
+const extractNumbers = (str: string) => {
   const numbers = str.match(/\d/g);
 
   return numbers ? numbers.map(Number) : [];
-}
+};
 
-export function useEvaluateExpression(expression: string): UseEvaluateExpression {
+export function useEvaluateExpression(
+  expression: string,
+): UseEvaluateExpression {
   const usedNumbers = extractNumbers(expression);
 
-  const error = (errorMsg: string) => ({result: 0, error: true, errorMsg, used: usedNumbers});
-  const success = (result: number) => ({result, error: false, errorMsg: '', used: usedNumbers});
+  const error = (errorMsg: string) => ({
+    result: 0,
+    error: true,
+    errorMsg,
+    used: usedNumbers,
+  });
+  const success = (result: number) => ({
+    result,
+    error: false,
+    errorMsg: '',
+    used: usedNumbers,
+  });
 
   if (expression.trim() === '') return success(0);
 
@@ -34,7 +46,7 @@ export function useEvaluateExpression(expression: string): UseEvaluateExpression
     .replace(/\\left/g, '(')
     .replace(/\\right/g, ')')
     .replace(/{/g, '(')
-    .replace(/}/g, ')')
+    .replace(/}/g, ')');
 
   try {
     return success(evaluate(mathExpression));
