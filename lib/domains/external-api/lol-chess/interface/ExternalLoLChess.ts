@@ -1,7 +1,7 @@
 export interface ExternalLoLChessResponse {
   meta: ExternalLoLChessMeta;
   matches: ExternalLoLChessMatch[];
-  summoners: ExternalLoLChessSummoner;
+  summoners: ExternalLoLChessSummoner[];
 }
 
 export interface ExternalLoLChessMeta {
