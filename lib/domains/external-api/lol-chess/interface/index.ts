@@ -1,1 +1,2 @@
-export * from './interface';
+export * from './LoLChessFriend';
+export * from './ExternalLoLChess';
