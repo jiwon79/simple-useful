@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 import styles from './Card.module.scss';
 
 export interface CardProps {
@@ -16,6 +16,6 @@ const Card = ({ name, desc, href }: CardProps) => {
       </div>
     </Link>
   );
-}
+};
 
 export default Card;

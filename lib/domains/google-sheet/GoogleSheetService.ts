@@ -1,4 +1,4 @@
-import { google, sheets_v4 } from "googleapis";
+import { google, sheets_v4 } from 'googleapis';
 
 export interface SheetResponse {
   status: number;
@@ -13,7 +13,10 @@ export class GoogleSheetService {
   constructor() {
     const client_id: string = process.env.GOOGLE_CLIENT_ID!;
     const client_email: string = process.env.GOOGLE_CLIENT_EMAIL!;
-    const private_key: string = process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, '\n');
+    const private_key: string = process.env.GOOGLE_PRIVATE_KEY!.replace(
+      /\\n/g,
+      '\n',
+    );
 
     const auth = new google.auth.GoogleAuth({
       credentials: {
@@ -28,7 +31,7 @@ export class GoogleSheetService {
       ],
     });
 
-    this.sheet = google.sheets({version: "v4", auth});
+    this.sheet = google.sheets({ version: 'v4', auth });
   }
 
   public static getInstance(): GoogleSheetService {
@@ -38,13 +41,17 @@ export class GoogleSheetService {
     return GoogleSheetService.instance;
   }
 
-  public async append(sheetName: string, range: string, values: string[][]): Promise<SheetResponse> {
-    const resource = {values};
+  public async append(
+    sheetName: string,
+    range: string,
+    values: string[][],
+  ): Promise<SheetResponse> {
+    const resource = { values };
 
     const response = await this.sheet.spreadsheets.values.append({
       spreadsheetId: this.sheetId,
       range: `${sheetName}!${range}`,
-      valueInputOption: "USER_ENTERED",
+      valueInputOption: 'USER_ENTERED',
       requestBody: resource,
     });
 
@@ -54,4 +61,3 @@ export class GoogleSheetService {
     };
   }
 }
-

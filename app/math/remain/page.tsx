@@ -3,7 +3,7 @@ const RemainPage = () => {
     <>
       <p>Remain</p>
     </>
-  )
-}
+  );
+};
 
-export default RemainPage
+export default RemainPage;

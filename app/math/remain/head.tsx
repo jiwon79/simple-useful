@@ -3,7 +3,7 @@ const Head = () => {
     <>
       <title>Simple Useful | Remain</title>
     </>
-  )
-}
+  );
+};
 
 export default Head;

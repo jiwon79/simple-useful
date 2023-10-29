@@ -1,10 +1,16 @@
-"use client";
-import { ReactNode, useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
-import * as ga from "@/component/common/Ga/ga";
-import Script from "next/script";
+'use client';
+import { ReactNode, useEffect } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import * as ga from '@/component/common/Ga/ga';
+import Script from 'next/script';
 
-const GaProvider = ({code, children}: { code: string, children: ReactNode }) => {
+const GaProvider = ({
+  code,
+  children,
+}: {
+  code: string;
+  children: ReactNode;
+}) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -14,7 +20,7 @@ const GaProvider = ({code, children}: { code: string, children: ReactNode }) => 
 
   return (
     <>
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${code}`}/>
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${code}`} />
       <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -27,6 +33,6 @@ const GaProvider = ({code, children}: { code: string, children: ReactNode }) => 
       {children}
     </>
   );
-}
+};
 
 export default GaProvider;

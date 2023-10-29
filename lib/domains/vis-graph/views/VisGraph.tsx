@@ -1,5 +1,5 @@
-import VisGraphWrapper, { Options } from "react-vis-graph-wrapper";
-import { VisNetworkEdge, VisNetworkNode } from "../interface"
+import VisGraphWrapper, { Options } from 'react-vis-graph-wrapper';
+import { VisNetworkEdge, VisNetworkNode } from '../interface';
 
 const options: Options = {
   layout: {
@@ -8,7 +8,8 @@ const options: Options = {
   nodes: {
     borderWidth: 0,
     shape: 'circularImage',
-    image: 'https://cdn-store.leagueoflegends.co.kr/images/v2/profileicons/4025.jpg',
+    image:
+      'https://cdn-store.leagueoflegends.co.kr/images/v2/profileicons/4025.jpg',
     scaling: {
       customScalingFunction: function (min, max, total, value) {
         return value / total;
@@ -30,11 +31,11 @@ interface VisGraphProp {
   edges: VisNetworkEdge[];
 }
 
-export const VisGraph = ({nodes, edges}: VisGraphProp) => {
+export const VisGraph = ({ nodes, edges }: VisGraphProp) => {
   const graphData = {
     nodes,
     edges,
   };
 
-  return (<VisGraphWrapper options={options} graph={graphData}/>)
-}
+  return <VisGraphWrapper options={options} graph={graphData} />;
+};

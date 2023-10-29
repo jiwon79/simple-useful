@@ -1,5 +1,5 @@
-import { Number } from "./Number";
-import { styled } from "@/stitches.config";
+import { Number } from './Number';
+import { styled } from '@/stitches.config';
 
 interface NumberGroupProps {
   inputs: number[];
@@ -10,7 +10,7 @@ interface NumberGroupProps {
 const markInput = (inputs: number[], used: number[]) => {
   const copyUsed = [...used];
 
-  return inputs.map(input => {
+  return inputs.map((input) => {
     let isUsed = copyUsed.includes(input);
 
     if (isUsed) {
@@ -20,34 +20,34 @@ const markInput = (inputs: number[], used: number[]) => {
 
     return {
       number: input,
-      isUsed: isUsed
+      isUsed: isUsed,
     };
   });
-}
+};
 
-export const NumberGroup = ({inputs, outputs, used}: NumberGroupProps) => {
+export const NumberGroup = ({ inputs, outputs, used }: NumberGroupProps) => {
   const markedInput = markInput(inputs, used);
 
   return (
     <Wrap>
-      {markedInput.map(
-        (input, index) =>
-          <Number key={index} number={input.number} isUsed={input.isUsed}/>
-      )}
+      {markedInput.map((input, index) => (
+        <Number key={index} number={input.number} isUsed={input.isUsed} />
+      ))}
       <Equal>=</Equal>
-      {outputs.map((output, index) => <Number key={index} number={output}/>)}
+      {outputs.map((output, index) => (
+        <Number key={index} number={output} />
+      ))}
     </Wrap>
-  )
-}
+  );
+};
 
-const Wrap = styled("div", {
-  display: "flex",
-  alignItems: "center",
-  marginBottom: "12px",
-})
-
-const Equal = styled("p", {
-  paragraph_18: true,
-  margin: "0 12px",
+const Wrap = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: '12px',
 });
 
+const Equal = styled('p', {
+  paragraph_18: true,
+  margin: '0 12px',
+});

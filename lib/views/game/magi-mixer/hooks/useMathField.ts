@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { MathField } from "react-mathquill";
+import { useRef, useState } from 'react';
+import { MathField } from 'react-mathquill';
 
 export function useMathField() {
   const mathFieldRef = useRef<MathField>();
@@ -8,27 +8,27 @@ export function useMathField() {
   const handleMathField = (mathField: MathField) => {
     mathFieldRef.current = mathField;
     setLatex(mathField.latex());
-  }
+  };
 
   const cmd = (cmd: string) => {
     if (mathFieldRef.current === undefined) return;
-    mathFieldRef.current.cmd(cmd)
+    mathFieldRef.current.cmd(cmd);
     mathFieldRef.current.focus();
-    setLatex(mathFieldRef.current.latex() ?? '')
-  }
+    setLatex(mathFieldRef.current.latex() ?? '');
+  };
 
   const keystroke = (key: string) => {
     if (mathFieldRef.current === undefined) return;
     mathFieldRef.current.focus();
-    mathFieldRef.current.keystroke(key)
-    setLatex(mathFieldRef.current.latex() ?? '')
-  }
+    mathFieldRef.current.keystroke(key);
+    setLatex(mathFieldRef.current.latex() ?? '');
+  };
 
   return {
     latex,
     mathField: mathFieldRef.current,
     handleMathField,
     cmd,
-    keystroke
-  }
+    keystroke,
+  };
 }
