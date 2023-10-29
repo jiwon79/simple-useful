@@ -1,1 +1,1 @@
-export * from "./VisGraph"
+export * from './VisGraph';

@@ -1,9 +1,5 @@
 const RemainPage = () => {
-  return (
-    <>
-      <p>Remain</p>
-    </>
-  )
-}
+  return <p>Remain</p>;
+};
 
-export default RemainPage
+export default RemainPage;

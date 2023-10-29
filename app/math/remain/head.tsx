@@ -1,9 +1,5 @@
 const Head = () => {
-  return (
-    <>
-      <title>Simple Useful | Remain</title>
-    </>
-  )
-}
+  return <title>Simple Useful | Remain</title>;
+};
 
 export default Head;

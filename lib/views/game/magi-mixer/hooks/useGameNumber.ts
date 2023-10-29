@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 interface UseGameNumber {
   inputs: number[];
@@ -14,7 +14,7 @@ const getRandomNumber = (min: number, max: number, length: number) => {
     numbers.push(number);
   }
   return numbers;
-}
+};
 
 const getRandomInputs = () => getRandomNumber(1, 6, 5);
 const getRandomOutputs = () => getRandomNumber(1, 6, 2);
@@ -35,7 +35,7 @@ export function useGameNumber(): UseGameNumber {
   const reset = () => {
     setInputs(getRandomInputs());
     setOutputs(getRandomOutputs());
-  }
+  };
 
-  return {inputs, outputs, outputNumber, reset};
+  return { inputs, outputs, outputNumber, reset };
 }

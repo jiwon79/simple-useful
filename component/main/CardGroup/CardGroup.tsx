@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Card, { CardProps } from "../Card/Card";
-import styles from "./CardGroup.module.scss";
+import Image from 'next/image';
+import Card, { CardProps } from '../Card/Card';
+import styles from './CardGroup.module.scss';
 
 export interface CardGroupProps {
   title: string;
@@ -16,12 +16,10 @@ const CardGroup = ({ title, icon, cards }: CardGroupProps) => {
           src={icon}
           width={32}
           height={32}
-          alt={"web logo"}
+          alt={'web logo'}
           className={styles.icon}
         />
-        <p className={styles.title}>
-          {title}
-        </p>
+        <p className={styles.title}>{title}</p>
       </div>
       <div className={styles.card__wrapper}>
         {cards.map((card, idx) => (
@@ -33,4 +31,3 @@ const CardGroup = ({ title, icon, cards }: CardGroupProps) => {
 };
 
 export default CardGroup;
-

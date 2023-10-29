@@ -1,4 +1,4 @@
-import styles from "./Footer.module.scss";
+import styles from './Footer.module.scss';
 
 const Footer = () => {
   return (
@@ -7,7 +7,7 @@ const Footer = () => {
       <p>&copy; 2023. Jiwon all rights reserved.</p>
       <p>CONTACT US : jiiwon79@gmail.com</p>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
