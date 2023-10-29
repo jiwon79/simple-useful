@@ -1,16 +1,16 @@
-export interface ExternalResponse {
-  meta: ExternalMeta;
-  matches: ExternalMatch[];
-  summoners: ExternalSummoner;
+export interface ExternalLoLChessResponse {
+  meta: ExternalLoLChessMeta;
+  matches: ExternalLoLChessMatch[];
+  summoners: ExternalLoLChessSummoner;
 }
 
-export interface ExternalMeta {
+export interface ExternalLoLChessMeta {
   page: number;
   perPage: number;
   totalCount: number;
 }
 
-export interface ExternalMatch {
+export interface ExternalLoLChessMatch {
   shard: string;
   matchId: number;
   gameCreatedAt: Date;
@@ -19,10 +19,10 @@ export interface ExternalMatch {
   gameVersion: string;
   patchVersion: string;
   queueId: number;
-  participants: ExternalParticipant[];
+  participants: ExternalLoLChessParticipant[];
 }
 
-export interface ExternalParticipant {
+export interface ExternalLoLChessParticipant {
   // legends: string[];
   // augments: string[];
   companionId: string;
@@ -37,7 +37,7 @@ export interface ExternalParticipant {
   // totalDamageToPlayers: number;
 }
 
-export interface ExternalSummoner {
+export interface ExternalLoLChessSummoner {
   puuid: string;
   shard: string;
   name: string;
