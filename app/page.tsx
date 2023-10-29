@@ -12,6 +12,11 @@ export default function Home() {
   // ];
   const gameCards: CardProps[] = [
     { name: 'Magi Mixer', desc: 'Magi Mixer', href: '/game/magi-mixer' },
+    {
+      name: '롤토체스 Network',
+      desc: '최근에 나와 롤토체스 한 사람들을 네트워크로 보여줍니다.',
+      href: '/game/lol-chess',
+    },
   ];
   const etcCards: CardProps[] = [
     {
