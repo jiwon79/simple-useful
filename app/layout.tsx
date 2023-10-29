@@ -15,7 +15,7 @@ interface LayoutProps {
 
 const RootLayout = ({ children }: LayoutProps) => {
   return (
-    <html>
+    <html lang="ko">
       <head>
         <link rel="icon" href="/favicon.png" />
       </head>

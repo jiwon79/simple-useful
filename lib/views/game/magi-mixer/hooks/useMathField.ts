@@ -10,9 +10,9 @@ export function useMathField() {
     setLatex(mathField.latex());
   };
 
-  const cmd = (cmd: string) => {
+  const cmd = (cmdStr: string) => {
     if (mathFieldRef.current === undefined) return;
-    mathFieldRef.current.cmd(cmd);
+    mathFieldRef.current.cmd(cmdStr);
     mathFieldRef.current.focus();
     setLatex(mathFieldRef.current.latex() ?? '');
   };

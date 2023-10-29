@@ -1,21 +1,21 @@
 import { toast } from 'react-toastify';
-import {
-  NumberGroup,
-  MathButtonGroup,
-  MathExpression,
-  ActionButtonGroup,
-  Description,
-} from '../components';
+import { isSameNumberArray } from '@lib/utils/array';
+import { styled } from '@/stitches.config';
+import { PageLayout } from '@views/common/layout';
+import dynamic from 'next/dynamic';
 import {
   useEvaluateExpression,
   useGameNumber,
   useMathField,
   useSendResultToServer,
 } from '../hooks';
-import { isSameNumberArray } from '@lib/utils/array';
-import { styled } from '@/stitches.config';
-import { PageLayout } from '@views/common/layout';
-import dynamic from 'next/dynamic';
+import {
+  ActionButtonGroup,
+  Description,
+  MathButtonGroup,
+  MathExpression,
+  NumberGroup,
+} from '../components';
 
 const DynamicMathEditor = dynamic(
   () => import('../components/MathEditor').then((mod) => mod.MathEditor),

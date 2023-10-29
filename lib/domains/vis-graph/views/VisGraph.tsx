@@ -11,7 +11,7 @@ const options: Options = {
     image:
       'https://cdn-store.leagueoflegends.co.kr/images/v2/profileicons/4025.jpg',
     scaling: {
-      customScalingFunction: function (min, max, total, value) {
+      customScalingFunction(min, max, total, value) {
         return value / total;
       },
       min: 5,

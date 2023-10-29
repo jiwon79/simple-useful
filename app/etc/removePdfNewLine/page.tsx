@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { styled } from '@/stitches.config';
 import PdfTextField from '@/component/etc/removePdfNewLine/PdfTextField';
@@ -23,9 +24,9 @@ const RemovePdfNewLinePage = () => {
           text={text.replaceAll('\n', ' ')}
           setText={null}
         >
-          <IconLink href={papagoLink} icon={'papago'} />
-          <IconLink href={googleTranslateLink} icon={'google_translate'} />
-          <IconLink href={deeplLink} icon={'deepl'} />
+          <IconLink href={papagoLink} icon="papago" />
+          <IconLink href={googleTranslateLink} icon="google_translate" />
+          <IconLink href={deeplLink} icon="deepl" />
         </PdfTextField>
       </TextFiledWrap>
     </Wrap>

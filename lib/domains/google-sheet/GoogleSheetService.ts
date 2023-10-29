@@ -11,18 +11,18 @@ export class GoogleSheetService {
   private readonly sheetId: string = process.env.GOOGLE_SPREADSHEET_ID!;
 
   constructor() {
-    const client_id: string = process.env.GOOGLE_CLIENT_ID!;
-    const client_email: string = process.env.GOOGLE_CLIENT_EMAIL!;
-    const private_key: string = process.env.GOOGLE_PRIVATE_KEY!.replace(
+    const clientID: string = process.env.GOOGLE_CLIENT_ID!;
+    const clientEmail: string = process.env.GOOGLE_CLIENT_EMAIL!;
+    const privateKey: string = process.env.GOOGLE_PRIVATE_KEY!.replace(
       /\\n/g,
       '\n',
     );
 
     const auth = new google.auth.GoogleAuth({
       credentials: {
-        client_id: client_id,
-        client_email: client_email,
-        private_key: private_key,
+        client_id: clientID,
+        client_email: clientEmail,
+        private_key: privateKey,
       },
       scopes: [
         'https://www.googleapis.com/auth/drive',

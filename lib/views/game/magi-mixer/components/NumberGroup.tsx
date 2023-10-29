@@ -1,5 +1,5 @@
-import { Number } from './Number';
 import { styled } from '@/stitches.config';
+import { Number } from './Number';
 
 interface NumberGroupProps {
   inputs: number[];
@@ -11,7 +11,7 @@ const markInput = (inputs: number[], used: number[]) => {
   const copyUsed = [...used];
 
   return inputs.map((input) => {
-    let isUsed = copyUsed.includes(input);
+    const isUsed = copyUsed.includes(input);
 
     if (isUsed) {
       const index = copyUsed.indexOf(input);
@@ -20,7 +20,7 @@ const markInput = (inputs: number[], used: number[]) => {
 
     return {
       number: input,
-      isUsed: isUsed,
+      isUsed,
     };
   });
 };

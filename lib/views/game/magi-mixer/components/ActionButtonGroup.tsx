@@ -48,7 +48,7 @@ const Button = styled('button', {
       primary: {
         backgroundColor: '$main300',
         border: '1px solid $main200',
-        ['&:disabled']: {
+        '&:disabled': {
           color: '$grey500',
         },
       },
