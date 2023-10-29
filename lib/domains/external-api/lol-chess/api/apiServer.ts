@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
-import { LoLChessService } from '@domains/external-api/lol-chess/service';
+import { LoLChessService } from '../service';
+import { LoLChessGETResponse } from './interface';
 
 export const GET = async (
   request: NextRequest,
@@ -9,7 +10,7 @@ export const GET = async (
 
   const loLChessFriends = await lolChessService.getLoLChessFriends(params.name);
 
-  const response = {
+  const response: LoLChessGETResponse = {
     name: params.name,
     friends: loLChessFriends,
     status: 200,
