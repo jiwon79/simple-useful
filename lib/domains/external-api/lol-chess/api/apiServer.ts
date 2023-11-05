@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { LoLChessService } from '../service';
 import { LoLChessGETResponse } from './interface';
 
-export const GET = async (
+export const GETFriendList = async (
   request: NextRequest,
   { params }: { params: { name: string } },
 ) => {
