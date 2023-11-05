@@ -1,46 +1,42 @@
-export interface ExternalLoLChessResponse {
-  meta: ExternalLoLChessMeta;
-  matches: ExternalLoLChessMatch[];
-  summoners: ExternalLoLChessSummoner[];
-}
-
-export interface ExternalLoLChessMeta {
-  page: number;
-  perPage: number;
-  totalCount: number;
+export interface ExternalLoLChessSummoner {
+  id: string;
+  accountId: string;
+  puuid: string;
+  name: string;
+  internalName: string;
+  profileIconId: number;
+  entry: object;
 }
 
 export interface ExternalLoLChessMatch {
-  shard: string;
-  matchId: number;
-  gameCreatedAt: Date;
-  gameLength: number;
-  gameVariation: string | null;
-  gameVersion: string;
-  patchVersion: string;
-  queueId: number;
-  participants: ExternalLoLChessParticipant[];
+  metadata: ExternalLoLChessMatchMetaData;
+  info: ExternalLoLChessMatchInfo;
+}
+
+export interface ExternalLoLChessMatchMap {
+  [key: number]: ExternalLoLChessMatch;
 }
 
 export interface ExternalLoLChessParticipant {
-  // legends: string[];
-  // augments: string[];
-  companionId: string;
-  companionImageUrl: string;
-  // goldLeft: number;
-  // lastRound: number;
-  // level: number;
-  // placement: number;
-  // playersEliminated: number;
+  id: string;
+  accountId: string;
   puuid: string;
-  // timeEliminated: number;
-  // totalDamageToPlayers: number;
+  name: string;
+  internalName: string;
+  profileIconId: string;
 }
 
-export interface ExternalLoLChessSummoner {
-  puuid: string;
-  shard: string;
-  name: string;
-  // summonerLevel: number;
-  profileIconUrl: string;
+export interface ExternalLoLChessMatchMetaData {
+  dataVersion: string;
+  matchId: string;
+  participants: ExternalLoLChessParticipant[];
+  version: string;
+}
+
+export interface ExternalLoLChessMatchInfo {
+  gameDatetime: number;
+  gameLength: number;
+  gameVariation: string;
+  queueId: number;
+  tftGameType: string;
 }

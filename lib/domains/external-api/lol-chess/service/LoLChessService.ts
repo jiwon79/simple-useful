@@ -1,97 +1,99 @@
 import {
   ExternalLoLChessMatch,
-  ExternalLoLChessResponse,
+  ExternalLoLChessMatchMap,
   ExternalLoLChessSummoner,
   LoLChessFriend,
 } from '@domains/external-api/lol-chess/interface';
 
-type SummonerMap = Map<string, ExternalLoLChessSummoner>;
-type MatchCountMap = Map<string, number>;
+type SummonerInternalName = string;
+type MatchCountMap = Map<SummonerInternalName, number>;
+type SummonerIconMap = Map<SummonerInternalName, string>;
 
 export class LoLChessService {
-  public async getLoLChessFriends(name: string): Promise<LoLChessFriend[]> {
-    const externalResponse = await this.fetchExternalLoLChess(name);
-    const externalMeta = externalResponse.meta;
-    const totalPage = Math.ceil(externalMeta.totalCount / externalMeta.perPage);
+  private static externalBaseUrl = 'https://tft-api.op.gg/api/v1';
 
-    const promises: Promise<ExternalLoLChessResponse>[] = [];
-    for (let page = 2; page <= Math.min(totalPage, 5); page++) {
-      promises.push(this.fetchExternalLoLChess(name, page));
+  public async getLoLChessFriends(name: string): Promise<LoLChessFriend[]> {
+    const summonerData = await this.getSummonerData(name);
+    const matchCountMap = new Map<SummonerInternalName, number>();
+    const summonerIconMap = new Map<SummonerInternalName, string>();
+    let lastMatchDate: Date | undefined;
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    for (const index of Array.from({ length: 4 }, (_, i) => i)) {
+      const matchesData = await this.getMatchesData(summonerData.id, {
+        startedAt: lastMatchDate,
+      });
+      this.applyMatchData(matchCountMap, summonerIconMap, matchesData);
+
+      lastMatchDate = new Date(matchesData.at(-1).info.gameDatetime);
+      if (matchesData.length < 30) break;
     }
 
-    const responses = await Promise.all(promises);
-
-    const summonerMap = this.groupSummonerByPuuid(externalResponse.summoners);
-    const matchCountMap = this.getMatchCountMap(externalResponse.matches);
-
-    responses.forEach((response) => {
-      this.groupSummonerByPuuid(response.summoners, summonerMap);
-      this.getMatchCountMap(response.matches, matchCountMap);
-    });
-
-    return this.getFriendFromMap(name, matchCountMap, summonerMap);
+    return this.getFriendListFromMap(name, matchCountMap, summonerIconMap);
   }
 
-  private async fetchExternalLoLChess(
+  private async getSummonerData(
     name: string,
-    page: number = 1,
-  ): Promise<ExternalLoLChessResponse> {
+  ): Promise<ExternalLoLChessSummoner> {
+    const url = new URL(`${LoLChessService.externalBaseUrl}/kr/summoners`);
+    url.searchParams.append('name', name);
+
+    const response = await fetch(url).then((res) => res.json());
+
+    return response.data as ExternalLoLChessSummoner;
+  }
+
+  private async getMatchesData(
+    puuid: string,
+    { startedAt }: { startedAt?: Date } = {},
+  ): Promise<ExternalLoLChessMatch[]> {
     const url = new URL(
-      `https://tft.dakgg.io/api/v1/summoners/kr/${name}/matches`,
+      `${LoLChessService.externalBaseUrl}/kr/summoners/${puuid}/matches`,
     );
-    url.searchParams.append('season', 'set9.5');
-    url.searchParams.append('page', page.toString());
-    url.searchParams.append('queueId', '0');
-    const externalRequestUrl = url.toString();
+    if (startedAt) {
+      url.searchParams.append('startedAt', startedAt.toISOString());
+    }
 
-    const response = await fetch(externalRequestUrl).then((res) => res.json());
+    const response = await fetch(url).then((res) => res.json());
+    const matchMap = response.data as ExternalLoLChessMatchMap;
 
-    return response as ExternalLoLChessResponse;
+    return Object.values(matchMap);
   }
 
-  private groupSummonerByPuuid(
-    summoners: ExternalLoLChessSummoner[],
-    summonerMap: SummonerMap = new Map<string, ExternalLoLChessSummoner>(),
-  ): SummonerMap {
-    summoners.forEach((summoner) => {
-      summonerMap.set(summoner.puuid, summoner);
-    });
-
-    return summonerMap;
-  }
-
-  private getMatchCountMap(
+  private applyMatchData(
+    matchCountMap: MatchCountMap,
+    summonerIconMap: SummonerIconMap,
     matches: ExternalLoLChessMatch[],
-    matchCountMap: MatchCountMap = new Map<string, number>(),
-  ): MatchCountMap {
-    matches.forEach((match) => {
-      match.participants.forEach((participant) => {
-        const count = matchCountMap.get(participant.puuid) || 0;
-        matchCountMap.set(participant.puuid, count + 1);
-      });
-    });
-
-    return matchCountMap;
+  ): void {
+    for (const match of matches) {
+      for (const participant of match.metadata.participants) {
+        const { internalName, profileIconId } = participant;
+        const count = matchCountMap.get(internalName) ?? 0;
+        matchCountMap.set(internalName, count + 1);
+        summonerIconMap.set(internalName, profileIconId);
+      }
+    }
   }
 
-  private getFriendFromMap(
+  private getFriendListFromMap(
     name: string,
     matchCountMap: MatchCountMap,
-    summonerMap: SummonerMap,
+    summonerIconMap: SummonerIconMap,
   ): LoLChessFriend[] {
-    const friends: LoLChessFriend[] = [];
+    const friendList: LoLChessFriend[] = [];
 
-    matchCountMap.forEach((count, puuid) => {
-      if (count < 2) return;
-      const summoner = summonerMap.get(puuid);
-      if (!summoner || summoner.name === name) return;
+    for (const [internalName, count] of matchCountMap) {
+      if (count < 2 || internalName === name) continue;
+      const iconNumber = summonerIconMap.get(internalName) ?? '1';
+      const profileImageUrl = `https://opgg-static.akamaized.net/meta/images/profile_icons/profileIcon${iconNumber}.jpg?image=q_auto,f_webp,w_200`;
 
-      friends.push({
-        name: summoner.name,
+      friendList.push({
+        name: internalName,
         count,
+        profileImageUrl,
       });
-    });
+    }
 
-    return friends;
+    return friendList;
   }
 }
