@@ -1,1 +1,3 @@
-export {SearchPage as default} from "@views/game/lol-chess/pages"
+'use client';
+
+export { SearchPage as default } from '@views/game/lol-chess/pages';

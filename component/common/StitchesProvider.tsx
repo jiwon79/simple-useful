@@ -1,14 +1,13 @@
 'use client';
-import React, { useState } from 'react';
+
+import React from 'react';
 import { useServerInsertedHTML } from 'next/navigation';
-import { getCssText } from '@/stitches.config';
+import { getCssText, globalStyles } from '@/stitches.config';
 
 const StitchesRegistry = ({ children }: { children: React.ReactNode }) => {
-  const [isRendered, setIsRendered] = useState(false);
-
+  // eslint-disable-next-line consistent-return
   useServerInsertedHTML(() => {
-    if (!isRendered) {
-      setIsRendered(true);
+    if (typeof window === 'undefined') {
       return (
         <style
           id="stitches"
@@ -18,6 +17,8 @@ const StitchesRegistry = ({ children }: { children: React.ReactNode }) => {
     }
   });
 
+  globalStyles();
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{children}</>;
 };
 

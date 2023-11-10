@@ -1,6 +1,6 @@
-import { createStitches } from '@stitches/react';
+import { createStitches, globalCss } from '@stitches/react';
 
-export const {styled, getCssText} = createStitches({
+export const { styled, getCssText } = createStitches({
   media: {
     mobile: '(max-width: 400px)',
     tablet: '(max-width: 768px)',
@@ -65,6 +65,7 @@ export const {styled, getCssText} = createStitches({
     paragraph_16: () => ({
       fontWeight: 400,
       fontSize: '16px',
+      letterSpacing: '-5%',
       lineHeight: '24px',
     }),
     paragraph_14: () => ({
@@ -77,5 +78,23 @@ export const {styled, getCssText} = createStitches({
       fontSize: '18px',
       lineHeight: '24px',
     }),
-  }
+  },
+});
+
+export const globalStyles = globalCss({
+  '*': { margin: 0, padding: 0, fontFamily: 'Pretendard' },
+  '@font-face': [
+    {
+      fontFamily: 'Pretendard',
+      src: "url('/fonts/Pretendard-Regular.woff2') format('woff2')",
+      fontWeight: 400,
+      fontStyle: 'normal',
+    },
+    {
+      fontFamily: 'Pretendard',
+      src: "url('/fonts/Pretendard-Semibold.woff2') format('woff2')",
+      fontWeight: 600,
+      fontStyle: 'normal',
+    },
+  ],
 });
