@@ -1,15 +1,20 @@
 import { styled } from '@/stitches.config';
 import { IconEnter } from '@lib/assets';
+import { useEnterKeyPress } from '@lib/hooks';
 
 interface SearchInputProps {
   value: string;
   onChange: (search: string) => void;
+  onButtonClick: () => void;
 }
 
 export const SearchInput = ({
   value,
   onChange: givenOnChange,
+  onButtonClick,
 }: SearchInputProps) => {
+  const { onKeyPress } = useEnterKeyPress(onButtonClick);
+
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     givenOnChange(event.target.value);
   };
@@ -21,6 +26,7 @@ export const SearchInput = ({
         placeholder="롤 닉네임"
         value={value}
         onChange={onChange}
+        onKeyPress={onKeyPress}
       />
       <EnterButton>
         <StyledIconEnter />
