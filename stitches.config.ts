@@ -83,6 +83,15 @@ export const { styled, getCssText } = createStitches({
 
 export const globalStyles = globalCss({
   '*': { margin: 0, padding: 0, fontFamily: 'Pretendard' },
+  html: {
+    margin: 0,
+    height: '100%',
+  },
+  body: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
   '@font-face': [
     {
       fontFamily: 'Pretendard',
