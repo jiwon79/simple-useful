@@ -2,17 +2,24 @@ import { NextRequest } from 'next/server';
 import { LoLChessService } from '../service';
 import { LoLChessGETResponse } from './interface';
 
+interface GetFriendListParams {
+  name: string;
+}
+
 export const GETFriendList = async (
   request: NextRequest,
-  { params }: { params: { name: string } },
+  { params: { name } }: { params: GetFriendListParams },
 ) => {
   const lolChessService = new LoLChessService();
 
-  const loLChessFriends = await lolChessService.getLoLChessFriends(params.name);
+  const summoner = await lolChessService.getSummonerData(name);
+
+  const friends = await lolChessService.getLoLChessFriends(name, summoner.id);
 
   const response: LoLChessGETResponse = {
-    name: params.name,
-    friends: loLChessFriends,
+    name,
+    profileImageUrl: LoLChessService.getProfileImageUrl(summoner.profileIconId),
+    friends,
     status: 200,
   };
 

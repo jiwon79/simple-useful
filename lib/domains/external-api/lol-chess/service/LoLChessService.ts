@@ -12,15 +12,17 @@ type SummonerIconMap = Map<SummonerInternalName, string>;
 export class LoLChessService {
   private static externalBaseUrl = 'https://tft-api.op.gg/api/v1';
 
-  public async getLoLChessFriends(name: string): Promise<LoLChessFriend[]> {
-    const summonerData = await this.getSummonerData(name);
+  public async getLoLChessFriends(
+    name: string,
+    summonerID: string,
+  ): Promise<LoLChessFriend[]> {
     const matchCountMap = new Map<SummonerInternalName, number>();
     const summonerIconMap = new Map<SummonerInternalName, string>();
     let lastMatchDate: Date | undefined;
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     for (const index of Array.from({ length: 4 }, (_, i) => i)) {
-      const matchesData = await this.getMatchesData(summonerData.id, {
+      const matchesData = await this.getMatchesData(summonerID, {
         startedAt: lastMatchDate,
       });
       this.applyMatchData(matchCountMap, summonerIconMap, matchesData);
@@ -32,7 +34,7 @@ export class LoLChessService {
     return this.getFriendListFromMap(name, matchCountMap, summonerIconMap);
   }
 
-  private async getSummonerData(
+  public async getSummonerData(
     name: string,
   ): Promise<ExternalLoLChessSummoner> {
     const url = new URL(`${LoLChessService.externalBaseUrl}/kr/summoners`);
@@ -85,15 +87,18 @@ export class LoLChessService {
     for (const [internalName, count] of matchCountMap) {
       if (count < 2 || internalName === name) continue;
       const iconNumber = summonerIconMap.get(internalName) ?? '1';
-      const profileImageUrl = `https://opgg-static.akamaized.net/meta/images/profile_icons/profileIcon${iconNumber}.jpg?image=q_auto,f_webp,w_200`;
 
       friendList.push({
         name: internalName,
         count,
-        profileImageUrl,
+        profileImageUrl: LoLChessService.getProfileImageUrl(iconNumber),
       });
     }
 
     return friendList;
+  }
+
+  static getProfileImageUrl(iconNumber: string | number): string {
+    return `https://opgg-static.akamaized.net/meta/images/profile_icons/profileIcon${iconNumber}.jpg?image=q_auto,f_webp,w_200`;
   }
 }
