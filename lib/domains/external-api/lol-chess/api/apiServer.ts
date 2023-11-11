@@ -17,7 +17,7 @@ export const GETFriendList = async (
   const friends = await lolChessService.getLoLChessFriends(name, summoner.id);
 
   const response: LoLChessGETResponse = {
-    name,
+    name: summoner.internalName,
     profileImageUrl: LoLChessService.getProfileImageUrl(summoner.profileIconId),
     friends,
     status: 200,

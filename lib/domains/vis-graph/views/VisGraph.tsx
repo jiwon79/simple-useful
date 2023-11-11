@@ -1,5 +1,7 @@
+'use client';
+
 import VisGraphWrapper, { Options } from 'react-vis-graph-wrapper';
-import { VisNetworkEdge, VisNetworkNode } from '../interface';
+import { VisGraphEdge, VisGraphNode } from '../interface';
 
 const options: Options = {
   layout: {
@@ -27,15 +29,16 @@ const options: Options = {
 };
 
 interface VisGraphProp {
-  nodes: VisNetworkNode[];
-  edges: VisNetworkEdge[];
+  nodes: VisGraphNode[];
+  edges: VisGraphEdge[];
+  style?: React.CSSProperties;
 }
 
-export const VisGraph = ({ nodes, edges }: VisGraphProp) => {
+export const VisGraph = ({ nodes, edges, style }: VisGraphProp) => {
   const graphData = {
     nodes,
     edges,
   };
 
-  return <VisGraphWrapper options={options} graph={graphData} />;
+  return <VisGraphWrapper options={options} graph={graphData} style={style} />;
 };
