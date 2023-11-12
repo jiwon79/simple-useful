@@ -164,3 +164,38 @@ $main400: #FFFFD0;
   font-size: 12px;
   line-height: 20px;
 }
+
+$mobile: 400px;
+$tablet_small: 640px;
+$tablet_large: 1024px;
+$desktop: 1440px;
+
+@mixin mobile{
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin table_small {
+    @media (min-width: $mobile+1) and (max-width: $tablet_small) {
+        @content;
+    }
+}
+
+@mixin tablet_large{
+  @media (min-width: $tablet_small+1) and (max-width: $tablet_large) {
+    @content;
+  }
+}
+
+@mixin desktop_small{
+  @media (min-width: $tablet_large+1) and (max-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin desktop_large{
+  @media (min-width: $desktop+1) {
+    @content;
+  }
+}

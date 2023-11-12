@@ -1,38 +1,45 @@
+'use client';
+
 import { LoLChessApiClient } from '@domains/external-api/lol-chess/api';
 import { VisGraph } from '@domains/vis-graph/views';
-import { VisGraphNode } from '@domains/vis-graph/interface';
+import { VisGraphEdge, VisGraphNode } from '@domains/vis-graph/interface';
 import {
   getEdgeFromFriend,
   getNodeFromFriend,
 } from '@views/game/lol-chess/utils';
+import { useEffect, useState } from 'react';
 
 interface DetailPageProps {
-  params: DetailPageParams;
-}
-
-interface DetailPageParams {
   name: string;
 }
 
-export const DetailPage = async ({ params: { name } }: DetailPageProps) => {
-  const data = await LoLChessApiClient.getLoLChessFriends(name);
+export const DetailPage = ({ name }: DetailPageProps) => {
+  const [nodes, setNodes] = useState<VisGraphNode[]>([]);
+  const [edges, setEdges] = useState<VisGraphEdge[]>([]);
 
-  const node: VisGraphNode = {
-    id: data.name,
-    label: data.name,
-    image: data.profileImageUrl,
-  };
-
-  const friendNodes = data.friends.map(getNodeFromFriend);
-  const friendEdges = data.friends.map((friend) => {
-    return getEdgeFromFriend(data.name, friend);
-  });
+  useEffect(() => {
+    const fetchSummoner = async () => {
+      const data = await LoLChessApiClient.getLoLChessFriends(name);
+      const rootNode: VisGraphNode = {
+        id: data.name,
+        label: data.name,
+        image: data.profileImageUrl,
+      };
+      const friendNodes = data.friends.map(getNodeFromFriend);
+      const friendEdges = data.friends.map((friend) => {
+        return getEdgeFromFriend(data.name, friend);
+      });
+      setNodes([rootNode, ...friendNodes]);
+      setEdges([...friendEdges]);
+    };
+    fetchSummoner();
+  }, []);
 
   return (
     <div>
       <VisGraph
-        nodes={[node, ...friendNodes]}
-        edges={[...friendEdges]}
+        nodes={nodes}
+        edges={edges}
         style={{
           width: 'calc(100vw - 200px)',
           height: '400px',

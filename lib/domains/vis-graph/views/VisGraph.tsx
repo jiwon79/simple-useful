@@ -32,13 +32,21 @@ interface VisGraphProp {
   nodes: VisGraphNode[];
   edges: VisGraphEdge[];
   style?: React.CSSProperties;
+  className?: string;
 }
 
-export const VisGraph = ({ nodes, edges, style }: VisGraphProp) => {
+export const VisGraph = ({ nodes, edges, style, className }: VisGraphProp) => {
   const graphData = {
     nodes,
     edges,
   };
 
-  return <VisGraphWrapper options={options} graph={graphData} style={style} />;
+  return (
+    <VisGraphWrapper
+      graph={graphData}
+      options={options}
+      style={style}
+      className={className}
+    />
+  );
 };
