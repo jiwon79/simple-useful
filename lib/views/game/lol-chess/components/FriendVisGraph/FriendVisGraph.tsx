@@ -1,8 +1,22 @@
+'use client';
+
+import { VisGraphEdge, VisGraphNode } from '@domains/vis-graph/interface';
+import { VisGraph } from '@domains/vis-graph/views';
 import styles from './FriendVisGraph.module.scss';
 
-export const FriendVisGraph = () => {};
+interface FriendVisGraphProp {
+  nodes: VisGraphNode[];
+  edges: VisGraphEdge[];
+}
+
+export const FriendVisGraph = ({ nodes, edges }: FriendVisGraphProp) => {
+  return <VisGraph nodes={nodes} edges={edges} className={styles.graphWrap} />;
+};
 
 export const FriendVisGraphLoading = () => {
+  console.log('window', window);
+  console.log(styles);
+  console.log(styles.graphWrap);
   return (
     <div className={styles.graphWrap}>
       <p className={styles.loadingText}>loading...</p>

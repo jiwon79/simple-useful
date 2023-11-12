@@ -1,19 +1,23 @@
 'use client';
 
 import { LoLChessApiClient } from '@domains/external-api/lol-chess/api';
-import { VisGraph } from '@domains/vis-graph/views';
 import { VisGraphEdge, VisGraphNode } from '@domains/vis-graph/interface';
 import {
   getEdgeFromFriend,
   getNodeFromFriend,
 } from '@views/game/lol-chess/utils';
 import { useEffect, useState } from 'react';
+import {
+  FriendVisGraph,
+  FriendVisGraphLoading,
+} from '@views/game/lol-chess/components/FriendVisGraph/FriendVisGraph';
 
 interface DetailPageProps {
   name: string;
 }
 
 export const DetailPage = ({ name }: DetailPageProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [nodes, setNodes] = useState<VisGraphNode[]>([]);
   const [edges, setEdges] = useState<VisGraphEdge[]>([]);
 
@@ -31,21 +35,18 @@ export const DetailPage = ({ name }: DetailPageProps) => {
       });
       setNodes([rootNode, ...friendNodes]);
       setEdges([...friendEdges]);
+      setIsLoading(false);
     };
     fetchSummoner();
   }, []);
 
+  if (isLoading) {
+    return <FriendVisGraphLoading />;
+  }
+
   return (
     <div>
-      <VisGraph
-        nodes={nodes}
-        edges={edges}
-        style={{
-          width: 'calc(100vw - 200px)',
-          height: '400px',
-          border: '1px solid #000',
-        }}
-      />
+      <FriendVisGraph nodes={nodes} edges={edges} />
     </div>
   );
 };

@@ -1,21 +1,22 @@
 @import "styles/styleGuide.module.scss";
 
-.graph-wrap {
+.graphWrap {
     @include paragraph-16;
 
-    width: calc(100% - 400px);
+    width: calc(100vw - 200px);
     height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid $grey250;
 
     @include mobile {
         width: calc(100% - 100px);
-        aspect-ratio: 1;
+        height: 400px;
     }
 }
 
-.loading-text {
+.loadingText {
     @include paragraph-16;
     color: $grey600;
 }
