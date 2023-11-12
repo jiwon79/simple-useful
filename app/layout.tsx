@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { ToastContainer } from 'react-toastify';
 
 import Footer from 'component/common/Footer/Footer';
 import { Header } from '@views/common/components';
 import StitchesProvider from '@/component/common/StitchesProvider';
 import GaProvider from '@/component/common/Ga/GaProvider';
-import styles from './layout.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import 'styles/globals.scss';
 
@@ -23,7 +22,7 @@ const RootLayout = ({ children }: LayoutProps) => {
         <GaProvider code={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}>
           <StitchesProvider>
             <Header />
-            <main className={styles.main}>{children}</main>
+            <main style={mainStyle}>{children}</main>
             <Footer />
             <ToastContainer limit={2} />
           </StitchesProvider>
@@ -31,6 +30,12 @@ const RootLayout = ({ children }: LayoutProps) => {
       </body>
     </html>
   );
+};
+
+const mainStyle: CSSProperties = {
+  maxWidth: '1024px',
+  margin: '0 auto',
+  flex: 1,
 };
 
 export default RootLayout;
