@@ -14,9 +14,6 @@ export const FriendVisGraph = ({ nodes, edges }: FriendVisGraphProp) => {
 };
 
 export const FriendVisGraphLoading = () => {
-  console.log('window', window);
-  console.log(styles);
-  console.log(styles.graphWrap);
   return (
     <div className={styles.graphWrap}>
       <p className={styles.loadingText}>loading...</p>

@@ -5,7 +5,7 @@ import { VisGraphEdge, VisGraphNode } from '../interface';
 
 const options: Options = {
   layout: {
-    // randomSeed: 0
+    clusterThreshold: 3,
   },
   nodes: {
     borderWidth: 0,
@@ -20,11 +20,12 @@ const options: Options = {
       max: 150,
     },
     font: {
-      size: 20,
+      size: 18,
     },
   },
   edges: {
     color: '#CCD1FF',
+    physics: true,
   },
 };
 
